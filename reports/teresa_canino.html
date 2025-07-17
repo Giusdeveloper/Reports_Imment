@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>
+<title>Teresa Canino</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<style>
+:root{--clr-bg:#f8fafc;--clr-card:#fff;--clr-text:#1f2937;--clr-muted:#64748b;
+      --clr-accent:#10b981;--tier-color:#6B7280;--radius:1rem;--shadow:0 6px 18px rgba(0,0,0,.06);}
+body{margin:0;font-family:'Inter',sans-serif;background:var(--clr-bg);color:var(--clr-text);}
+.container{max-width:960px;margin:2rem auto;padding:0 1rem;display:grid;gap:2rem;}
+.card{background:var(--clr-card);border-radius:var(--radius);box-shadow:var(--shadow);padding:2rem;}
+.hero{display:flex;flex-direction:column;gap:1.25rem;text-align:center;align-items:center;}
+.hero-title{font-size:1.75rem;font-weight:700;}
+.score-big{font-size:2.75rem;font-weight:700;margin:0.25rem 0;}
+.badge{background:var(--tier-color);color:#fff;padding:0.25rem 0.75rem;border-radius:9999px;font-size:.875rem;text-transform:uppercase;}
+.progress-list{display:grid;gap:1.25rem;}
+.progress-item{display:grid;grid-template-columns:220px 1fr 60px;align-items:center;gap:1rem;}
+.progress-item label{font-weight:500;color:var(--clr-muted);}
+.bar{position:relative;width:100%;height:.625rem;background:#e5e7eb;border-radius:9999px;overflow:hidden;}
+.fill{position:absolute;top:0;left:0;height:100%;background:var(--clr-accent);}
+.score-num{font-weight:600;font-size:.875rem;text-align:right;width:60px;}
+.sector-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.sector-card{background:#f0f9ff;border-radius:var(--radius);padding:1rem 1.25rem;display:grid;gap:.5rem;box-shadow:0 2px 6px rgba(0,0,0,.04);}
+.startup-card{background:#f0fff4;border-radius:var(--radius);padding:1rem 1.25rem;display:grid;gap:.5rem;box-shadow:0 2px 6px rgba(0,0,0,.04);}
+.startup-name{font-weight:600;font-size:1.1rem;}
+.startup-pitch{font-size:.95rem;margin-top:.5rem;}
+.timeline{display:flex;flex-direction:column;gap:1rem;}
+.phase{display:flex;gap:.75rem;align-items:flex-start;}
+.phase-dot{width:12px;height:12px;background:var(--clr-accent);border-radius:50%;margin-top:5px;flex-shrink:0;}
+.phase-content a{color:var(--clr-accent);text-decoration:none;font-weight:500;}
+.phase-content a:hover{text-decoration:underline;}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:.5rem .75rem;border:1px solid #e5e7eb;font-size:.875rem;}
+th{background:#f1f5f9;text-align:left;}
+.download-section{text-align:center;margin-top:2rem;padding:1rem;background:var(--clr-bg);}
+.download-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;background:#21427f;color:#ffffff;border:none;padding:0.75rem 1.5rem;border-radius:9999px;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s ease-in-out;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.download-btn:hover{background:#18335f;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+.download-btn svg{width:18px;height:18px;}
+@media print{
+  .page-break{page-break-before:always;}
+  .download-section{display:none;}
+  @page{margin:1cm;size:A4;}
+  body{background:white;}
+  .card{box-shadow:none;border:1px solid #e5e7eb;}
+}
+</style>
+<script>
+function downloadAsPDF() {
+  const downloadSection = document.querySelector('.download-section');
+  downloadSection.style.display = 'none';
+  
+  const originalTitle = document.title;
+  document.title = "Teresa Canino - Report Investitore.pdf";
+  
+  window.print();
+  
+  setTimeout(() => {
+    downloadSection.style.display = 'block';
+    document.title = originalTitle;
+  }, 1000);
+}
+</script>
+</head><body><main class="container">
+<!-- HERO -->
+<section class="card hero">
+  <div class="hero-title">Report - Teresa Canino</div>
+  <div style="width:100%;max-width:340px;margin-top:.5rem;">
+  <div class="bar"><div class="fill" style="width:{{weightedTotal}}%;"></div></div>
+  <p style="margin:.5rem 0 0 0;font-weight:600;">{{weightedTotal}} / 100</p>
+</div>
+  <div class="badge">Novice</div>
+  <p class="descrizione">Teresa ha un background nella consulenza e un portafoglio di investimenti che varia tra 5.000 e 25.000 €. È interessata a sviluppare ulteriormente le sue competenze nel settore degli investimenti e a valutare startup innovative.</p>
+</section>
+<!-- SCORE BREAKDOWN -->
+<section class="card"><h2>Ripartizione Punteggi</h2>
+  <div class="progress-list">
+    
+      <div class="progress-item">
+        <label>Esperienza e Background</label>
+        <div class="bar"><div class="fill" style="width:50%"></div></div>
+        <div class="score-num">5/10</div>
+      </div>
+    
+      <div class="progress-item">
+        <label>Orizzonte temporale</label>
+        <div class="bar"><div class="fill" style="width:60%"></div></div>
+        <div class="score-num">6/10</div>
+      </div>
+    
+      <div class="progress-item">
+        <label>Network e Relazioni</label>
+        <div class="bar"><div class="fill" style="width:40%"></div></div>
+        <div class="score-num">4/10</div>
+      </div>
+    
+      <div class="progress-item">
+        <label>Struttura e Processi di investimento</label>
+        <div class="bar"><div class="fill" style="width:50%"></div></div>
+        <div class="score-num">5/10</div>
+      </div>
+    
+      <div class="progress-item">
+        <label>Conoscenza di Settore</label>
+        <div class="bar"><div class="fill" style="width:50%"></div></div>
+        <div class="score-num">5/10</div>
+      </div>
+    
+      <div class="progress-item">
+        <label>Apporto di Valore non Finanziario</label>
+        <div class="bar"><div class="fill" style="width:40%"></div></div>
+        <div class="score-num">4/10</div>
+      </div>
+    
+      <div class="progress-item">
+        <label>Risk Appetite</label>
+        <div class="bar"><div class="fill" style="width:50%"></div></div>
+        <div class="score-num">5/10</div>
+      </div>
+    
+      <div class="progress-item">
+        <label>Track Record</label>
+        <div class="bar"><div class="fill" style="width:30%"></div></div>
+        <div class="score-num">3/10</div>
+      </div>
+    
+      <div class="progress-item">
+        <label>Supporto post-investimento</label>
+        <div class="bar"><div class="fill" style="width:40%"></div></div>
+        <div class="score-num">4/10</div>
+      </div>
+    
+  </div>
+</section>
+<!-- PRIORITY ACTIONS -->
+
+<section class="card"><h2>Miglioramenti consigliati</h2><ul>
+  <li>Network e Relazioni: Espandere il proprio network partecipando a eventi di settore.</li><li>Apporto di Valore non Finanziario: Partecipare a corsi di formazione su come fornire valore aggiunto alle startup.</li><li>Track Record: Studiare le metriche chiave per valutare il track record delle startup.</li>
+</ul></section>
+<!-- SECTORS & TRAINING -->
+<section class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+  <div><h2>Settori di Investimento</h2><div class="sector-grid">
+    
+      <div class="sector-card"><div class="sector-title">Biotech</div>
+        <div class="sector-rationale">Crescita del mercato e innovazione sostenibile.</div>
+        <ul class="sector-actions"><li>Investire in startup biotech che promuovono la sostenibilità.</li><li>Partecipare a conferenze sul tema biotech.</li></ul>
+      </div>
+    
+      <div class="sector-card"><div class="sector-title">Tecnologia</div>
+        <div class="sector-rationale">Il settore tech continua a crescere e a trasformarsi.</div>
+        <ul class="sector-actions"><li>Seguire corsi su investimenti in tecnologia.</li><li>Analizzare le tendenze del mercato tecnologico.</li></ul>
+      </div>
+    
+      <div class="sector-card"><div class="sector-title">E-commerce</div>
+        <div class="sector-rationale">Espansione del commercio elettronico post-pandemia.</div>
+        <ul class="sector-actions"><li>Investire in startup che innovano nel settore e-commerce.</li><li>Studiare modelli di business di successo nel retail online.</li></ul>
+      </div>
+    
+  </div></div>
+  <div><h2>Piano di Formazione</h2><div class="timeline">
+    <div class="phase">
+            <span class="phase-dot"></span>
+            <div class="phase-content">Corso di Finanza e Investimenti - Il Corso Completo</div>
+          </div><div class="phase">
+            <span class="phase-dot"></span>
+            <div class="phase-content">Tutorial gratuito di Investimenti - Da zero a investitore consapevole</div>
+          </div>
+  </div></div>
+</section>
+<!-- STARTUP MATCHES -->
+
+<section class="card"><h2>Startup suggerite</h2><div class="sector-grid">
+  
+    <div class="startup-card"><div class="startup-name">Nutrinsect</div>
+      <div class="startup-pitch">Biotech che alleva grilli per produrre farine proteiche sostenibili.</div>
+      <p style="margin:0;font-size:.85rem">Innovazione sostenibile nel settore alimentare.</p></div>
+  
+    <div class="startup-card"><div class="startup-name">Dokimazo</div>
+      <div class="startup-pitch">Skill‑wallet AI che mappa competenze reali.</div>
+      <p style="margin:0;font-size:.85rem">Tecnologia e reskilling in crescita.</p></div>
+  
+    <div class="startup-card"><div class="startup-name">GoldSprint</div>
+      <div class="startup-pitch">Asta online e community per il trading di oro.</div>
+      <p style="margin:0;font-size:.85rem">Interesse per il trading e le nuove piattaforme.</p></div>
+  
+</div></section>
+<!-- ANNEX A -->
+<div class="page-break"></div>
+<section class="card"><h2>Allegato A – Tabella Punteggi Dettagliata</h2>
+  <table><thead><tr><th>#</th><th>Criterio</th><th>Peso</th><th>Punteggio</th></tr></thead><tbody>
+    <tr><td>1</td><td>Esperienza e Background</td><td>20%</td><td>5/10</td></tr><tr><td>2</td><td>Orizzonte temporale</td><td>15%</td><td>6/10</td></tr><tr><td>3</td><td>Network e Relazioni</td><td>10%</td><td>4/10</td></tr><tr><td>4</td><td>Struttura e Processi di investimento</td><td>10%</td><td>5/10</td></tr><tr><td>5</td><td>Conoscenza di Settore</td><td>10%</td><td>5/10</td></tr><tr><td>6</td><td>Apporto di Valore non Finanziario</td><td>10%</td><td>4/10</td></tr><tr><td>7</td><td>Risk Appetite</td><td>10%</td><td>5/10</td></tr><tr><td>8</td><td>Track Record</td><td>10%</td><td>3/10</td></tr><tr><td>9</td><td>Supporto post-investimento</td><td>5%</td><td>4/10</td></tr>
+  </tbody></table>
+</section>
+<!-- ANNEX B -->
+
+<section class="card"><h2>Allegato B – Dettaglio Completo Azioni di Miglioramento</h2>
+  
+      <h3>Network e Relazioni</h3>
+      <ul><li>Espandere il proprio network partecipando a eventi di settore.</li><li>Collegarsi con investitori esperti tramite piattaforme online.</li></ul>
+    
+      <h3>Apporto di Valore non Finanziario</h3>
+      <ul><li>Partecipare a corsi di formazione su come fornire valore aggiunto alle startup.</li><li>Leggere case study su investimenti non finanziari efficaci.</li></ul>
+    
+      <h3>Track Record</h3>
+      <ul><li>Studiare le metriche chiave per valutare il track record delle startup.</li><li>Analizzare casi di investimenti di successo per comprendere il percorso.</li></ul>
+    
+</section>
+
+<!-- DOWNLOAD BUTTON -->
+<div class="download-section">
+  <button onclick="downloadAsPDF()" class="download-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+    Scarica PDF
+  </button>
+</div>
+</main></body></html>
