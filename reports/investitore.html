@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>
+<title>Report Investitore</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<style>
+:root{--clr-bg:#f8fafc;--clr-card:#fff;--clr-text:#1f2937;--clr-muted:#64748b;
+      --clr-accent:#10b981;--tier-color:#3B82F6;--radius:1rem;--shadow:0 6px 18px rgba(0,0,0,.06);}
+body{margin:0;font-family:'Inter',sans-serif;background:var(--clr-bg);color:var(--clr-text);}
+.container{max-width:960px;margin:2rem auto;padding:0 1rem;display:grid;gap:2rem;}
+.card{background:var(--clr-card);border-radius:var(--radius);box-shadow:var(--shadow);padding:2rem;}
+.hero{display:flex;flex-direction:column;gap:1.25rem;text-align:center;align-items:center;}
+.hero-title{font-size:1.75rem;font-weight:700;}
+.score-big{font-size:2.75rem;font-weight:700;margin:0.25rem 0;}
+.badge{background:var(--tier-color);color:#fff;padding:0.25rem 0.75rem;border-radius:9999px;font-size:.875rem;text-transform:uppercase;}
+.progress-list{display:grid;gap:1.25rem;}
+.progress-item{display:grid;grid-template-columns:220px 1fr 60px;align-items:center;gap:1rem;}
+.progress-item label{font-weight:500;color:var(--clr-muted);}
+.bar{position:relative;width:100%;height:.625rem;background:#e5e7eb;border-radius:9999px;overflow:hidden;}
+.fill{position:absolute;top:0;left:0;height:100%;background:var(--clr-accent);}
+.score-num{font-weight:600;font-size:.875rem;text-align:right;width:60px;}
+.sector-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.sector-card{background:#f0f9ff;border-radius:var(--radius);padding:1rem 1.25rem;display:grid;gap:.5rem;box-shadow:0 2px 6px rgba(0,0,0,.04);}
+.startup-card{background:#f0fff4;border-radius:var(--radius);padding:1rem 1.25rem;display:grid;gap:.5rem;box-shadow:0 2px 6px rgba(0,0,0,.04);}
+.startup-name{font-weight:600;font-size:1.1rem;}
+.startup-pitch{font-size:.95rem;margin-top:.5rem;}
+.timeline{display:flex;flex-direction:column;gap:1rem;}
+.phase{display:flex;gap:.75rem;align-items:flex-start;}
+.phase-dot{width:12px;height:12px;background:var(--clr-accent);border-radius:50%;margin-top:5px;flex-shrink:0;}
+.phase-content a{color:var(--clr-accent);text-decoration:none;font-weight:500;}
+.phase-content a:hover{text-decoration:underline;}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:.5rem .75rem;border:1px solid #e5e7eb;font-size:.875rem;}
+th{background:#f1f5f9;text-align:left;}
+.download-section{text-align:center;margin-top:2rem;padding:1rem;background:var(--clr-bg);}
+.download-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;background:#21427f;color:#ffffff;border:none;padding:0.75rem 1.5rem;border-radius:9999px;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s ease-in-out;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.download-btn:hover{background:#18335f;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+.download-btn svg{width:18px;height:18px;}
+@media print{
+  .page-break{page-break-before:always;}
+  .download-section{display:none;}
+  @page{margin:1cm;size:A4;}
+  body{background:white;}
+  .card{box-shadow:none;border:1px solid #e5e7eb;}
+}
+</style>
+<script>
+function downloadAsPDF() {
+  const downloadSection = document.querySelector('.download-section');
+  downloadSection.style.display = 'none';
+  
+  const originalTitle = document.title;
+  document.title = "Report Investitore - Report Investitore.pdf";
+  
+  window.print();
+  
+  setTimeout(() => {
+    downloadSection.style.display = 'block';
+    document.title = originalTitle;
+  }, 1000);
+}
+</script>
+</head><body><main class="container">
+<!-- HERO -->
+<section class="card hero">
+  <div class="hero-title">Report - Investitore</div>
+  <div style="width:100%;max-width:340px;margin-top:.5rem;">
+    <div class="bar"><div class="fill" style="width:0%;"></div></div>
+    <p style="margin:.5rem 0 0 0;font-weight:600;">0 / 100</p>
+  </div>
+  <div class="badge">N/A</div>
+  <p class="descrizione">Dati non disponibili</p>
+</section>
+<!-- SCORE BREAKDOWN -->
+<section class="card"><h2>Ripartizione Punteggi</h2>
+  <div class="progress-list">
+    
+  </div>
+</section>
+<!-- PRIORITY ACTIONS -->
+
+<!-- SECTORS & TRAINING -->
+<section class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+  <div><h2>Settori di Investimento</h2><div class="sector-grid">
+    
+  </div></div>
+  <div><h2>Piano di Formazione</h2><div class="timeline">
+    
+  </div></div>
+</section>
+<!-- STARTUP MATCHES -->
+
+<!-- ANNEX A -->
+<div class="page-break"></div>
+<section class="card"><h2>Allegato A – Tabella Punteggi Dettagliata</h2>
+  <table><thead><tr><th>#</th><th>Criterio</th><th>Peso</th><th>Punteggio</th></tr></thead><tbody>
+    
+  </tbody></table>
+</section>
+<!-- ANNEX B -->
+
+
+<!-- DOWNLOAD BUTTON -->
+<div class="download-section">
+  <button onclick="downloadAsPDF()" class="download-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+    Scarica PDF
+  </button>
+</div>
+</main></body></html>
